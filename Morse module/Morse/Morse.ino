@@ -1,20 +1,6 @@
 #include "SevSeg.h"
 SevSeg sevseg;
 
-//TODO Add all the game words into level 2
-//TODO Add solved LED
-//TODO Read and comment code
-
-//TODO Make pictures of the breadboard
-//TODO Solder the stuff onto a perf-board
-
-//TODO design morse lamp 3d print
-//TODO desgin box for morse
-
-//TODO make diagram of wiring
-
-//TODO Audio output for morse signal
-
 
 const int module_id = 3;
 bool rerandomize = false;
@@ -179,7 +165,8 @@ void setup() {
 
   //We are using analog pins as digital in some cases, because of the lack of pins
   pinMode(A5, OUTPUT); //LED for morse
-  pinMode(A4, OUTPUT); //LED for module solved
+  pinMode(A4, OUTPUT); //LED for module solved - R
+  pinMode(A4, OUTPUT); //LED for module solved - G
   pinMode(A2, INPUT_PULLUP); //Up button
   pinMode(A1, INPUT_PULLUP); //Down button
   pinMode(A0, INPUT_PULLUP); //Send (TX) button
