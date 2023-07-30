@@ -1,0 +1,25 @@
+a message is a length, then a type, and then length-2 bytes of data
+e.g. 0x04 0x00 0xff 0x00(len=4, type=0, data = 0xff00)
+N bytes means variable,  bytes are - the 2 required ones
+Messages from pi to arduino:
+0 bytes Bomb exploded 0x00
+0 bytes Bomb defused 0x01
+0 bytes Start of setup phase 0x02
+1 byte difficulty 0x03
+0 bytes End of setup phase 0x04
+2 bytes Time remaining 0x05
+1 byte Serial number index 0x06
+1 byte leds bitmask(the indicators CAR, FRK, NSA and others)  0x07
+1 byte batteries(upper nibble = AA count, lower nibble = D count) 0x08
+2 bytes ports(first byte first crumb = DVI-D count, first byte second crumb = Parallel port count, first byte third crumb = PS/2 count, first byte fourth crumb = RJ-45 count, second byte first crumb = Serial port count, second byte second crumb = Stereo RCA port count) 0x09
+N bytes Setup data 0x0a
+N bytes Relay data(first byte = id of target module) 0x0b
+Messages from arduino to pi:
+0 bytes Request Time remaining 0x0c
+0 bytes Request Serial number 0x0d
+0 bytes Request leds bitmask(the indicators CAR, FRK, NSA and others) 0x0e
+0 bytes Request batteries 0x0f
+0 bytes Request ports 0x10
+N bytes Setup data 0x0a
+N bytes Relay data(first byte = id of target module) 0x0b
+
