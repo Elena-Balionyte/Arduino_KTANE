@@ -23,3 +23,18 @@ Messages from arduino to pi:
 N bytes Setup data 0x0a
 N bytes Relay data(first byte = id of target module) 0x0b
 
+ID list
+0 = suitcase
+1 = timer
+2 = souvenier
+3 = morse
+4 = button
+255 = pi
+
+morse module 
+sends the array of the freqency and word to sovenier(first byte is length of the word, next is freq-3500, next ones are letters)
+
+button module
+sends the chosen word, then button color, lastly the strip color(all are 1 byte, following the mapping below)
+byte to word: 0 = ABORT, 1 = DETONATE, 2 = HOLD, 3 = PRESS
+byte to colors: 0 = RED, 1 = WHITE, 2 = BLUE, 3 = YELLOW, 4 = GREEN 
