@@ -74,7 +74,6 @@ def parse_message(port,buffer,last_display):
             seconds = time_remain.seconds % 60
             port.write(b'\x04\x05')
             #port.write(bytes([mins]))
-            print(mins)
             port.write(bytes([int(str(seconds),16)]))
         elif message_type == 0x0f:
             D = input("Input number of D batteries: ")
