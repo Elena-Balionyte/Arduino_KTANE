@@ -3,7 +3,7 @@ const int module_id = 3;
 bool ledState[3] = {false, false, false};        // the current state of the output pin
 bool buttonState[3] = {false, false, false};        // the current reading from the input pin
 bool lastButtonState[3] = {false, false, false};  // the previous reading from the input pin
-
+int difficulty = 0;
 // the following variables are unsigned longs because the time, measured in
 // milliseconds, will quickly become a bigger number than can be stored in an int.
 unsigned long lastDebounceTime[3] = {0, 0, 0}; // the last time the output pin was toggled
