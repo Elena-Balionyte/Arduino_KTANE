@@ -57,10 +57,10 @@ byte morse_len_table[26] =
   4, 4        // Y Z
 };
 
-//Words that can be transmitted, first dimension is the level (1-4), second is the list of words, third is the letters in a word, and signal frequency (First 5 are the letters, the sixth one is the frequency)
+//Words that can be transmitted, first dimension is the level (1-4), second is the list of words, 
+//Third is the letters in a word, and signal frequency (First byte is the length of the word, next is the frequency minus 3500, the following bytes are the letters in the word)
 const static byte words[4][20][8] = {
   { //Start of level 1
-
 
     {5, 3, 18,  7, 4, 11, 11}, //Shell
     {5, 6,  7,  0, 11, 11, 18}, //Halls

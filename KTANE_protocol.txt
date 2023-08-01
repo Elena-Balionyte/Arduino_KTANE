@@ -7,19 +7,35 @@ Messages from pi to arduino:
 0 bytes Start of setup phase 0x02
 1 byte difficulty 0x03
 0 bytes End of setup phase 0x04
-2 bytes Time remaining 0x05
+2 bytes Time remaining (First byte is minutes (upper nibble = nothing, lower nibble = unit minutes), second byte is seconds (upper nibble = tens of seconds (first digit), lower nibble = unit seconds (second digit))) 0x05 
 1 byte Serial number index 0x06
-1 byte leds bitmask(the indicators CAR, FRK, NSA and others)  0x07
+1 byte Bitmask of the indicators (TRN, BOB, MSA, NSA, FRQ, FRK, CLR, CAR), Most Significant Bit first 0x07
 1 byte batteries(upper nibble = AA count, lower nibble = D count) 0x08
 2 bytes ports(first byte first crumb = DVI-D count, first byte second crumb = Parallel port count, first byte third crumb = PS/2 count, first byte fourth crumb = RJ-45 count, second byte first crumb = Serial port count, second byte second crumb = Stereo RCA port count) 0x09
 N bytes Setup data 0x0a
-N bytes Relay data(first byte = id of target module) 0x0b
+N bytes Relay data(first byte = id of source module) 0x0b
+
 Messages from arduino to pi:
 0 bytes Request Time remaining 0x0c
 0 bytes Request Serial number 0x0d
-0 bytes Request leds bitmask(the indicators CAR, FRK, NSA and others) 0x0e
+0 bytes Request Bitmask of the indicators (TRN, BOB, MSA, NSA, FRQ, FRK, CLR, CAR), Most Significant Bit first 0x0e 
 0 bytes Request batteries 0x0f
 0 bytes Request ports 0x10
 N bytes Setup data 0x0a
 N bytes Relay data(first byte = id of target module) 0x0b
 
+ID list
+0 = suitcase
+1 = timer
+2 = souvenier
+3 = morse
+4 = button
+255 = pi
+
+morse module 
+sends the array of the freqency and word to sovenier(first byte is length of the word, next is freq-3500, next ones are letters)
+
+button module
+sends the chosen word, then button color, lastly the strip color(all are 1 byte, following the mapping below)
+byte to word: 0 = ABORT, 1 = DETONATE, 2 = HOLD, 3 = PRESS
+byte to colors: 0 = RED, 1 = WHITE, 2 = BLUE, 3 = YELLOW, 4 = GREEN 
