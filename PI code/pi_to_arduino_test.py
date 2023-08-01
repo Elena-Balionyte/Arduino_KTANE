@@ -1,5 +1,5 @@
 import pi_to_arduino
-import pytest
+#import pytest
 class TestClass:
     def test_dummy(self):
         port = pi_to_arduino.dummy_port()

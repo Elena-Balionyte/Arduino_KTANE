@@ -85,7 +85,7 @@ def parse_message(port,buffer,last_display):
             indicators = ('CAR', 'CLR', 'FRK', 'FRQ', 'NSA', 'MSA', 'BOB', 'TRN')
             byte = 0
             for i,indicator in enumerate(indicators):
-                has_ind = input(f"do you want a {indicator} indicator(anything = yes, empty = no): ")
+                has_ind = input(f"do you want a {indicator} indicator(anything = yes, empty = no): ") # noqa: E501
                 byte += bool(has_ind) << i
             port.write(b'\x03\x07')
             port.write(bytes([int(byte)]))
